@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: evsok-nginx-deployment
   labels:
-    app: nginx
+    app: evsok-nginx
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: evsok-nginx
   template
     metadata:
       labels:
-        app: nginx
+        app: evsok-nginx
     spec:
       containers:
-      - name: nginx
+      - name: evsok-nginx
         image: nginx:latest
         ports:
         - containerPort: 80
