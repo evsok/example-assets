@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: evsok-nginx-deployment
+  name: nginx-deployment
   labels:
-    app: evsok-nginx
+    app: nginx
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: evsok-nginx
-  template
+      app: nginx
+  template:
     metadata:
       labels:
-        app: evsok-nginx
+        app: nginx
     spec:
       containers:
-      - name: evsok-nginx
+      - name: nginx
         image: nginx:latest
         ports:
         - containerPort: 80
