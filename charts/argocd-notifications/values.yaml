@@ -124,7 +124,7 @@ subscriptions: []
   #
   # For more information: https://argoproj-labs.github.io/argocd-notifications/triggers_and_templates/
 
-templates: []
+#templates: []
   # The notification template is used to generate the notification content. The template is leveraging html/template
   # golang package and allow to define notification title and body. The template is meant to be reusable and can be
   # referenced by multiple triggers.
@@ -140,7 +140,42 @@ templates: []
   #   title: Application {{.app.metadata.name}} sync status is {{.app.status.sync.status}}
   #
   # For more information: https://argoproj-labs.github.io/argocd-notifications/triggers_and_templates/
+templates:
+  - name: sync-operation-status-change
+    webhook:
+      es-test-channel:
+        body: >
+          { {{if eq .app.status.operationState.phase "Succeeded"}}"body":
+          ":white_check_mark: **{{.app.metadata.name}}** on
+          **{{.context.argocdUrl}}** synced successfully" {{end}}
 
+          {{if eq .app.status.operationState.phase "Running"}}"body": ":arrows_counterclockwise: Syncing **{{.app.metadata.name}}** on **{{.context.argocdUrl}}**" {{end}}
+
+          {{if eq .app.status.operationState.phase "Error"}}"body": ":rotating_light: Error syncing **{{.app.metadata.name}}** on **{{.context.argocdUrl}}**" {{end}}
+
+          {{if eq .app.status.operationState.phase "Failed"}}"body": ":rotating_light: Failure syncing **{{.app.metadata.name}}** on **{{.context.argocdUrl}}**" {{end}}
+
+          {{if eq .app.status.operationState.phase "Unknown"}}"body": "::shrug: Something went wrong syncing **{{.app.metadata.name}}** on **{{.context.argocdUrl}}**" {{end}}
+
+          }
+        method: POST
+      es-test-channel-b:
+        body: >
+          { {{if eq .app.status.operationState.phase "Succeeded"}}"body":
+          ":white_check_mark: **{{.app.metadata.name}}** on
+          **{{.context.argocdUrl}}** synced successfully" {{end}}
+
+          {{if eq .app.status.operationState.phase "Running"}}"body": ":arrows_counterclockwise: Syncing **{{.app.metadata.name}}** on **{{.context.argocdUrl}}**" {{end}}
+
+          {{if eq .app.status.operationState.phase "Error"}}"body": ":rotating_light: Error syncing **{{.app.metadata.name}}** on **{{.context.argocdUrl}}**" {{end}}
+
+          {{if eq .app.status.operationState.phase "Failed"}}"body": ":rotating_light: Failure syncing **{{.app.metadata.name}}** on **{{.context.argocdUrl}}**" {{end}}
+
+          {{if eq .app.status.operationState.phase "Unknown"}}"body": "::shrug: Something went wrong syncing **{{.app.metadata.name}}** on **{{.context.argocdUrl}}**" {{end}}
+
+          }     
+        method: POST
+        
 tolerations: []
 
 triggers:
