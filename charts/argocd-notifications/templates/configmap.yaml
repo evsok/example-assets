@@ -11,6 +11,6 @@ data:
     subscriptions:
       {{- toYaml .Values.subscriptions | nindent 6 }}
     templates:
-      {{- .Values.templates | nindent 6 }}
+      {{- toYaml .Values.templates | nindent 6 }}
     triggers:
       {{- toYaml .Values.triggers | nindent 6 }}
