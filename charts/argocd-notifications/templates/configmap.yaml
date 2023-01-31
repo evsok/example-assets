@@ -10,8 +10,6 @@ data:
       argocdUrl: {{ .Values.argocdUrl | quote }}
     subscriptions:
       {{- toYaml .Values.subscriptions | nindent 6 }}
-    aaa:
-      {{- toYaml .Values.aaa | nindent 6 }}
     templater:
       {{- toYaml .Values.templater | nindent 6 }}  
     templates:
