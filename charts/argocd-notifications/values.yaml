@@ -125,7 +125,7 @@ subscriptions: []
   # For more information: https://argoproj-labs.github.io/argocd-notifications/triggers_and_templates/
 aaa: []
 
-semplater: []
+semp: []
 
 templates: []
   # The notification template is used to generate the notification content. The template is leveraging html/template
