@@ -12,8 +12,8 @@ data:
       {{- toYaml .Values.subscriptions | nindent 6 }}
     aaa:
       {{- toYaml .Values.aaa | nindent 6 }}
-    semplater:
-      {{- toYaml .Values.semplater | nindent 6 }}  
+    templater:
+      {{- toYaml .Values.templater | nindent 6 }}  
     templates:
       {{- toYaml .Values.templates | nindent 6 }}
     triggers:
