@@ -13,7 +13,7 @@ data:
     aaa:
       {{- toYaml .Values.aaa | nindent 6 }}
     semplater:
-      {{- toYaml .Values.templates | nindent 6 }}  
+      {{- toYaml .Values.semplater | nindent 6 }}  
     templates:
       {{- toYaml .Values.templates | nindent 6 }}
     triggers:
