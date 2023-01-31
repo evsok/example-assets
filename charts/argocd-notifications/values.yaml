@@ -123,7 +123,6 @@ subscriptions: []
   #   selector: test=true
   #
   # For more information: https://argoproj-labs.github.io/argocd-notifications/triggers_and_templates/
-aaa: []
 
 templater: []
 
