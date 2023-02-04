@@ -12,5 +12,5 @@ spec:
   project: default
   source:
     path: argocd/getting-started
-    repoURL: https://github.com/argoproj/argocd-example-apps
+    repoURL: https://github.com/evsok/example-assets.git
     targetRevision: HEAD
